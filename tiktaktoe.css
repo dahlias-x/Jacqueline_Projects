@@ -13,7 +13,9 @@ body {
     background-image: url("https://media.giphy.com/media/3ohhwNqFMnb7wZgNnq/giphy.gif");
     background-size:contain;
 }
-
+audio{
+    display:none;
+}
 .board {
     width: 100vw;
     height: 100vh;
@@ -37,6 +39,7 @@ body {
     align-items: center;
     position:relative;
 }
+
 .cell:first-child,
 .cell:nth-child(2),
 .cell:nth-child(3) {
