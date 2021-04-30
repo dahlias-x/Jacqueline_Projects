@@ -1,1 +1,3 @@
 # Jacqueline_Projects
+In This Folder You can find my all learning/study Projects.
+please be patient, learning is process...

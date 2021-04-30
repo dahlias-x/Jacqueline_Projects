@@ -1,0 +1,30 @@
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-image: url("https://media.giphy.com/media/3ohhwNqFMnb7wZgNnq/giphy.gif");
+    background-size: cover;
+    color:white;
+}
+section {
+    text-align:center;
+    font-size: 60px;
+    text-shadow: 3px 3px 3px blue;
+}
+.game--container {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    width: 306px;
+    margin: 150px auto;
+    align-content: center;
+    justify-content: center;
+
+}
+.cell {
+    font-family: "Permanent Marker", cursive;
+    width: 200px;
+    height: 200px;
+    box-shadow:inset 0px 0px 20px 10px blue;
+    border: 5px solid white;
+    cursor: pointer;
+    line-height: 100px;
+    font-size: 50px;
+}
