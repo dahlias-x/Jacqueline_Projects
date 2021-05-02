@@ -8,14 +8,17 @@
     --mark-size: calc(var(--cell-size) *.9);
     }
 
-body {
+body
+ {
     margin: 0;
     background-image: url("https://media.giphy.com/media/3ohhwNqFMnb7wZgNnq/giphy.gif");
     background-size:contain;
 }
+
 audio{
     display:none;
 }
+
 .board {
     width: 100vw;
     height: 100vh;
@@ -27,6 +30,7 @@ audio{
     grid-template-columns: repeat(3, auto);
 
 }
+
 .cell {
     width: var(--cell-size);
     height: var(--cell-size);
@@ -38,6 +42,7 @@ audio{
     justify-content: center;
     align-items: center;
     position:relative;
+    cursor: pointer;
 }
 
 .cell:first-child,
@@ -45,23 +50,38 @@ audio{
 .cell:nth-child(3) {
     border-top:none;
 }
+
 .cell:first-child,
 .cell:nth-child(4),
 .cell:nth-child(7) {
     border-left:none;
 } 
+
 .cell:nth-child(3),
 .cell:nth-child(6),
 .cell:last-child {
     border-right:none;
 } 
+
 .cell:nth-child(7),
 .cell:nth-child(8),
 .cell:last-child {
     border-bottom:none;
 } 
+
+.cell.x,
+.cell.circle {
+    cursor:not-allowed;
+}
+
+.board.x .cell:hover {
+
+}
+
 .cell.x::before,
-.cell.x::after{
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.x .cell:not(.x):not(.circle):hover::after {
     content:"";
     position: absolute;
     width: calc(var(--mark-size)* .15);
@@ -69,29 +89,31 @@ audio{
     background-color:rgb(250, 250, 250);
 }
 
-.cell.x::before {
+.cell.x::before,
+.board.x .cell:not(.x):not(.circle):hover::before {
     transform: rotate(45deg);
 }
 
-.cell.x::after {
+.cell.x::after,
+.board.x .cell:not(.x):not(.cirle):hover::after {
     transform: rotate(-45deg);
 }
 
 .cell.circle::before,
-.cell.circle::after{
+.cell.circle::after {
     content:"";
     position: absolute;
     border-radius:50%;
 }
 
-.cell.circle::before{
+.cell.circle::before {
     width:  var(--mark-size);
     height: var(--mark-size);
     background-color:rgb(250,250,250);
     box-shadow: inset 0px 0px 0px 0px blue;
 
 }
-.cell.circle::after{
+.cell.circle::after {
     width: calc(var(--mark-size)* .7);
     height: calc(var(--mark-size)* .7);
     box-shadow: inset 0px 0px 0px 0px blue;
