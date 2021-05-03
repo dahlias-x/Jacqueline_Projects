@@ -18,17 +18,24 @@ const restartButton = document.getElementById('restartbutton')
 const winninmessagetextElement = 
 document.querySelector('[data-winning-message-text]')
 let circleTurn
+
 startGame()
 
 restartButton.addEventListener('click',startGame)
+
 function startGame(){
     circleTurn = false
     cellElements.forEach(cell =>{
     cell.classList.remove(X_CLASS)
     cell.classList.remove(CIRCLE_CLASS)
-    cell-removeEventListener('click',handleClick)
-    cell.addEventListener('click', handleClick, { once: true } ) 
+    cell.removeEventListener('click',handleClick)
+    cell.addEventListener('click', handleClick, { once: true }) 
 })
+
+setBoardHoverCLass()
+
+winningmessageELement.classList.remove('show')}
+
 
 
 function handleCLick(e) {
@@ -36,16 +43,30 @@ function handleCLick(e) {
     const currentCLass = circleTurn ? CIRCLE_CLASS : X_CLASS ///__if itscircles turn we want return circle clas viceversa///
     placeMark(cell, currentCLass)
     if(checkWin(currentCLass)){      ////if checkwin i want to do something inside of this
-        endeGame(false)
+        endGame(false)
     } else if (isDraw()){
-        endeGame(true)
+        endGame(true)
     } else { swapTurns()
         setBoardHoverClass()//hover has to based on whos turn currently is after swap not who s turn is used to be///
     } 
     }
     
+function endGame(draw){
+    if(draw){
+        winningmessagetextElement.innerText = 'Draw!'
+    }else {
+        winningmessageELement.innerText = `${circleTurn ?"O's":
+        "X's"} Wins!`
+    }
+    winningmessageElement.classList.add('show')
+    }
 
-
+    Function isDraw(){
+        return[...cellELement].every(cell=> {
+            return cell.classList.contains(X_CLASS) ||
+            cell.classList.contains(CIRCLE_CLASS)
+        })
+    }
 
 function placeMark(cell, currentCLass) {
     cell.classList.add(currentCLass)
@@ -74,5 +95,4 @@ function checkWin(currentClass) {
             (currentClass) //everysingle celll once is correct we want to check if some of the winnig combinations is met
         })
     })
-
 }
